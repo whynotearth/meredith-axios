@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "swagger": "mkdir temp -p && ts-node src/swagger-axios.ts && tsc -p ./temp/index.ts --moduleResolution classic --target es6 --outDir ./dist/"
+    "build": "mkdir temp -p && ts-node src/swagger-axios.ts && tsc -p ./temp/index.ts --moduleResolution classic --target es6 --outDir ./dist/"
   },
   "dependencies": {
     "swagger-axios-codegen": "^0.9.17"
