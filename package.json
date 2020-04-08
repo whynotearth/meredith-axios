@@ -1,0 +1,21 @@
+{
+  "name": "@whynotearth/meredith-axios",
+  "version": "1.0.0",
+  "description": "API methods built for axios",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger": "mkdir temp -p && ts-node src/swagger-axios.ts && tsc -p ./temp/index.ts --moduleResolution classic --target es6 --outDir ./dist/"
+  },
+  "dependencies": {
+    "swagger-axios-codegen": "^0.9.17"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.0",
+    "ts-node": "8.5.4",
+    "esm": "3.2.25",
+    "typescript": "~3.5.3"
+  },
+  "author": "",
+  "license": "ISC"
+}
