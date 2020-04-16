@@ -151,12 +151,14 @@ export class JumpStartService {
             axios(configs, resolve, reject);
         });
     }
+}
+export class MemoService {
     /**
      *
      */
-    static test(params = {}, options = {}) {
+    static memo(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/jumpstart/test';
+            let url = '/api/v0/volkswagen/memo';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
@@ -324,6 +326,35 @@ export class PriceService {
             let url = '/api/v0/hotel/prices';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class ProductsService {
+    /**
+     *
+     */
+    static categories(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantId}/categories';
+            url = url.replace('{tenantId}', params['tenantId'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static products(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantId}/categories/{categoryId}/products';
+            url = url.replace('{tenantId}', params['tenantId'] + '');
+            url = url.replace('{categoryId}', params['categoryId'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
