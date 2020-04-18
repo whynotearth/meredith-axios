@@ -1,6 +1,6 @@
 {
   "name": "@whynotearth/meredith-axios",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API methods built for axios",
   "main": "./dist/index.js",
   "scripts": {
@@ -17,5 +17,9 @@
     "typescript": "~3.5.3"
   },
   "author": "",
-  "license": "ISC"
+  "license": "AGPL-v3",
+  "contributors": [
+    "Morteza Ziyae <m.ziaeemehr@gmail.com>"
+  ],
+  "repository": "https://github.com/whynotearth/meredith-axios"
 }
