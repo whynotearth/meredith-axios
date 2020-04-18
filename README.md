@@ -7,7 +7,7 @@ yarn build
 
 Then in your project:  
 ```
-yarn add whynotearth/meredith-axios#v1.0.0
+yarn add @whynotearth/meredith-axios
 ```
 
 ```
