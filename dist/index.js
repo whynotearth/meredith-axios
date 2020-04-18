@@ -186,6 +186,21 @@ export class PageService {
      */
     static slug1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
+            let url = '/api/v0/pages/slug/{companySlug}/{tenantSlug}/{pageSlug}';
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{pageSlug}', params['pageSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static slug2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
             let url = '/api/v0/pages/slug/{companySlug}';
             url = url.replace('{companySlug}', params['companySlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
@@ -337,8 +352,8 @@ export class ProductsService {
      */
     static categories(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/tenant/{tenantId}/categories';
-            url = url.replace('{tenantId}', params['tenantId'] + '');
+            let url = '/api/v0/tenants/{tenantSlug}/categories';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
@@ -350,10 +365,24 @@ export class ProductsService {
      */
     static products(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/tenant/{tenantId}/categories/{categoryId}/products';
-            url = url.replace('{tenantId}', params['tenantId'] + '');
+            let url = '/api/v0/tenants/{tenantSlug}/categories/{categoryId}/products';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             url = url.replace('{categoryId}', params['categoryId'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class RecipientService {
+    /**
+     *
+     */
+    static recipient(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/recipient';
+            const configs = getConfigs('put', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -421,12 +450,27 @@ export class SalonReservationService {
     /**
      *
      */
-    static reserve(params = {}, options = {}) {
+    static reservations(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/salon/reservations/{tenantId}/reserve';
-            url = url.replace('{tenantId}', params['tenantId'] + '');
+            let url = '/api/v0/tenants/{tenantSlug}/reservations';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class TenantService {
+    /**
+     *
+     */
+    static tenants(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants';
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
