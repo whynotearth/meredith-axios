@@ -137,6 +137,20 @@ export class CompanyService {
         });
     }
 }
+export class DistributionGroupService {
+    /**
+     *
+     */
+    static distributiongroups(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups';
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class JumpStartService {
     /**
      *
@@ -156,9 +170,9 @@ export class MemoService {
     /**
      *
      */
-    static memo(params = {}, options = {}) {
+    static memos(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/memo';
+            let url = '/api/v0/volkswagen/memos';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
@@ -379,9 +393,9 @@ export class RecipientService {
     /**
      *
      */
-    static recipient(params = {}, options = {}) {
+    static recipients(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/recipient';
+            let url = '/api/v0/volkswagen/recipients';
             const configs = getConfigs('put', 'application/json', url, options);
             let data = null;
             configs.data = data;
