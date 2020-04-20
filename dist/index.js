@@ -150,6 +150,70 @@ export class DistributionGroupService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static distributiongroups1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups';
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static stats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups/stats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static recipients(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups/{distributionGroupName}/recipients';
+            url = url.replace('{distributionGroupName}', params['distributionGroupName'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static recipients1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups/{distributionGroupName}/recipients';
+            url = url.replace('{distributionGroupName}', params['distributionGroupName'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static recipients2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups/{distributionGroupName}/recipients/{recipientId}';
+            url = url.replace('{recipientId}', params['recipientId'] + '');
+            url = url.replace('{distributionGroupName}', params['distributionGroupName'] + '');
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class JumpStartService {
     /**
@@ -175,6 +239,18 @@ export class MemoService {
             let url = '/api/v0/volkswagen/memos';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static stats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/memos/stats';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
@@ -379,24 +455,10 @@ export class ProductsService {
      */
     static products(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/tenants/{tenantSlug}/categories/{categoryId}/products';
+            let url = '/api/v0/tenants/{tenantSlug}/categories/{categorySlug}/products';
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            url = url.replace('{categoryId}', params['categoryId'] + '');
+            url = url.replace('{categorySlug}', params['categorySlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
-export class RecipientService {
-    /**
-     *
-     */
-    static recipients(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/recipients';
-            const configs = getConfigs('put', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -460,21 +522,6 @@ export class RoomTypeService {
         });
     }
 }
-export class SalonReservationService {
-    /**
-     *
-     */
-    static reservations(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/tenants/{tenantSlug}/reservations';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
 export class TenantService {
     /**
      *
@@ -485,6 +532,21 @@ export class TenantService {
             url = url.replace('{companySlug}', params['companySlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class TenantReservationService {
+    /**
+     *
+     */
+    static reservations(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenants/{tenantSlug}/reservations';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
             configs.data = data;
             axios(configs, resolve, reject);
         });
