@@ -214,6 +214,20 @@ export class DistributionGroupService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static recipients3(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups/{distributionGroupName}/recipients/{recipientId}';
+            url = url.replace('{recipientId}', params['recipientId'] + '');
+            url = url.replace('{distributionGroupName}', params['distributionGroupName'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class JumpStartService {
     /**
@@ -246,10 +260,10 @@ export class MemoService {
     /**
      *
      */
-    static stats(params = {}, options = {}) {
+    static memos1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/memos/stats';
-            const configs = getConfigs('post', 'application/json', url, options);
+            let url = '/api/v0/volkswagen/memos';
+            const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
