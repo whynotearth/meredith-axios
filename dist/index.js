@@ -269,6 +269,19 @@ export class MemoService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static stats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/memos/{memoId}/stats';
+            url = url.replace('{memoId}', params['memoId'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class PageService {
     /**
