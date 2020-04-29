@@ -1,4 +1,4 @@
-## Usage
+## Initial setup
 
 ```
 yarn add @whynotearth/meredith-axios
@@ -11,10 +11,6 @@ import { serviceOptions } from '@whynotearth/meredith-axios';
 serviceOptions.axios = ajax;
 ```
 
-```
-// store module
-import { PageService } from '@whynotearth/meredith-axios'
-```
 
 ```
 // ajax.js
@@ -26,3 +22,24 @@ const ajax = axios.create({
   withCredentials: true
 });
 ```
+
+## Usage
+
+Check this file for all available axios requests to API https://github.com/whynotearth/meredith-axios/blob/master/dist/index.js
+
+The in your project import the required service and use the methods inside services.
+
+```
+// store module
+import { PageService } from '@whynotearth/meredith-axios'
+
+...
+actions: {
+  fetch_pages_by_name() {
+    return PageService.byName(yourParams, yourOptions)
+  }
+}
+
+
+```
+
