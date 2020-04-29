@@ -33,7 +33,6 @@ The in your project import the required service and use the methods inside servi
 // store module
 import { PageService } from '@whynotearth/meredith-axios'
 
-...
 actions: {
   fetch_pages_by_name() {
     return PageService.byName(yourParams, yourOptions)
