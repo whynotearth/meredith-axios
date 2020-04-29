@@ -1,15 +1,6 @@
 ## Usage
 
 ```
-yarn install  
-yarn build
-```
-
-Build command will connect to meredith-core project and will update this project with latest API routes.
-
-
-Then in your project:  
-```
 yarn add @whynotearth/meredith-axios
 ```
 
