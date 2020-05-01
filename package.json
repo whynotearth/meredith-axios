@@ -9,7 +9,7 @@
     "patch": "npm version patch -m 'release %s'"
   },
   "dependencies": {
-    "swagger-axios-codegen": "^0.10.2"
+    "swagger-axios-codegen": "^0.10.3"
   },
   "devDependencies": {
     "@types/node": "^13.11.0",

@@ -147,10 +147,10 @@ structured-log@^0.2.0:
   resolved "https://registry.yarnpkg.com/structured-log/-/structured-log-0.2.0.tgz#b9be1794c39d6399f265666b84635a3307611c5b"
   integrity sha512-W3Tps8PN5Mon37955/wuZZSXwBXiB52AUnd/oPVdmo+O+mLkr2fNajV6821gJ8irrgVQx3gYOqSWPMgj7Dy3Yg==
 
-swagger-axios-codegen@^0.9.17:
-  version "0.9.17"
-  resolved "https://registry.yarnpkg.com/swagger-axios-codegen/-/swagger-axios-codegen-0.9.17.tgz#e6a55c3694c25299d7ac6d368e5678130fbc3a0c"
-  integrity sha512-Mm/lfhpYeg2lMSxGegnGRFR7rfTDlajoS37xwoqGzTwqQ6R6HZppeTIxChIdbq5E+C1tzftHGKEWEgL5f/5eIw==
+swagger-axios-codegen@^0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/swagger-axios-codegen/-/swagger-axios-codegen-0.10.3.tgz#0a6b43e08b7bd4465fb9687d47bcb30fe40015c8"
+  integrity sha512-mbcB5MbXe/+uYlr25hS3HO38u4Vdbf2RgspAoaGf1qc/+5zK5IfCgV5ewz7n+OkyF+m1m53qeD8p6qg0r13MDg==
   dependencies:
     axios "^0.19.0"
     camelcase "^5.0.0"
