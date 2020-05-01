@@ -90,6 +90,30 @@ export class AuthenticationService {
             axios(configs, resolve, reject);
         });
     }
+     /**
+     *
+     */
+      static sendResetPasswordLink(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/authentication/forgotpassword';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static setNewPassword(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/authentication/forgotpasswordreset';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
     /**
      *
      */
