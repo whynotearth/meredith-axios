@@ -102,6 +102,30 @@ export class AuthenticationService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static forgotpassword(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/authentication/forgotpassword';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static forgotpasswordreset(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/authentication/forgotpasswordreset';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class CardService {
     /**
@@ -233,8 +257,20 @@ export class JumpStartService {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/jumpstart';
             const configs = getConfigs('post', 'application/json', url, options);
-            configs.params = { dateTime: params['dateTime'] };
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static preview(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/jumpstart/preview';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { postIds: params['postIds'] };
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
