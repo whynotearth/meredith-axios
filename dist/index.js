@@ -27,6 +27,60 @@ export class PagedResultDto {
 }
 // customer definition
 // empty
+export class ArticleService {
+    /**
+     *
+     */
+    static articles(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/articles';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static articles1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/articles/{articleId}';
+            url = url.replace('{articleId}', params['articleId'] + '');
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static articles2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/articles/{articleId}';
+            url = url.replace('{articleId}', params['articleId'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class ArticleCategoryService {
+    /**
+     *
+     */
+    static categories(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/categories';
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class AuthenticationService {
     /**
      *
@@ -265,11 +319,23 @@ export class JumpStartService {
     /**
      *
      */
+    static jumpstart1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/jumpstart';
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static preview(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/jumpstart/preview';
+            let url = '/api/v0/volkswagen/jumpstart/{jumpStartId}/preview';
+            url = url.replace('{jumpStartId}', params['jumpStartId'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { postIds: params['postIds'] };
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -409,73 +475,6 @@ export class PlanetCollageService {
             let url = '/api/v0/planetcollage/full';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
-export class PostService {
-    /**
-     *
-     */
-    static posts(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/posts';
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static posts1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/posts';
-            const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { date: params['date'] };
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static posts2(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/posts/{postId}';
-            url = url.replace('{postId}', params['postId'] + '');
-            const configs = getConfigs('put', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static posts3(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/posts/{postId}';
-            url = url.replace('{postId}', params['postId'] + '');
-            const configs = getConfigs('delete', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
-export class PostCategoryService {
-    /**
-     *
-     */
-    static categories(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/categories';
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
