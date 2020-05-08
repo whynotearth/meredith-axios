@@ -38,7 +38,6 @@ actions: {
     return PageService.byName(yourParams, yourOptions)
   }
 }
-
-
 ```
 
+When this package updated, you have to run `yarn install` inside your project.
