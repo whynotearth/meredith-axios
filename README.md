@@ -40,4 +40,4 @@ actions: {
 }
 ```
 
-When this package updated, you have to run `yarn install` inside your project.
+When this package updated, you have to run `yarn add @whynotearth/meredith-axios` again inside your project to update it to latest version.
