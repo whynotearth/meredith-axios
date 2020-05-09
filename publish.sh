@@ -1,0 +1,1 @@
+yarn build || true && git add . && git commit -m "build" && npm run patch && npm publish --access=public

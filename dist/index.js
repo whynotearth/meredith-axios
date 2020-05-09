@@ -45,19 +45,6 @@ export class ArticleService {
      */
     static articles1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/articles';
-            const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { date: params['date'] };
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static articles2(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/articles/{articleId}';
             url = url.replace('{articleId}', params['articleId'] + '');
             const configs = getConfigs('put', 'application/json', url, options);
@@ -69,7 +56,7 @@ export class ArticleService {
     /**
      *
      */
-    static articles3(params = {}, options = {}) {
+    static articles2(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/articles/{articleId}';
             url = url.replace('{articleId}', params['articleId'] + '');
@@ -352,6 +339,19 @@ export class JumpStartService {
             url = url.replace('{jumpStartId}', params['jumpStartId'] + '');
             const configs = getConfigs('put', 'application/json', url, options);
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static availablearticles(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/jumpstart/{jumpStartId}/availablearticles';
+            url = url.replace('{jumpStartId}', params['jumpStartId'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
