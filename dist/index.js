@@ -66,6 +66,18 @@ export class ArticleService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static dailyplan(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/articles/dailyplan';
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class ArticleCategoryService {
     /**
