@@ -1,6 +1,6 @@
 {
   "name": "@whynotearth/meredith-axios",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "API methods built for axios",
   "main": "./dist/index.js",
   "scripts": {
