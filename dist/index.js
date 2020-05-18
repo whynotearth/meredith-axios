@@ -347,8 +347,7 @@ export class JumpStartService {
      */
     static jumpstart(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/jumpstart/{jumpStartId}';
-            url = url.replace('{jumpStartId}', params['jumpStartId'] + '');
+            let url = '/api/v0/volkswagen/jumpstart';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
