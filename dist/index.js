@@ -415,9 +415,9 @@ export class MemoService {
     /**
      *
      */
-    static memos1(params = {}, options = {}) {
+    static stats(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/memos';
+            let url = '/api/v0/volkswagen/memos/stats';
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
@@ -427,7 +427,7 @@ export class MemoService {
     /**
      *
      */
-    static stats(params = {}, options = {}) {
+    static stats1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/memos/{memoId}/stats';
             url = url.replace('{memoId}', params['memoId'] + '');
