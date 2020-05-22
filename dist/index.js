@@ -1,7 +1,7 @@
 // Add default options
 export const serviceOptions = {};
 // Instance selector
-export function axios(configs, resolve, reject) {
+function axios(configs, resolve, reject) {
     if (serviceOptions.axios) {
         return serviceOptions.axios
             .request(configs)
@@ -16,10 +16,14 @@ export function axios(configs, resolve, reject) {
         throw new Error('please inject yourself instance like axios  ');
     }
 }
-export function getConfigs(method, contentType, url, options) {
+function getConfigs(method, contentType, url, options) {
     const configs = Object.assign({}, options, { method, url });
     configs.headers = Object.assign({}, options.headers, { 'Content-Type': contentType });
     return configs;
+}
+export class IList extends Array {
+}
+export class List extends Array {
 }
 export class ListResultDto {
 }
@@ -242,7 +246,7 @@ export class DistributionGroupService {
     static distributiongroups(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/distributiongroups';
-            const configs = getConfigs('put', 'multipart/form-data', url, options);
+            const configs = getConfigs('put', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
