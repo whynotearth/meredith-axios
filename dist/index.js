@@ -27,60 +27,6 @@ export class PagedResultDto {
 }
 // customer definition
 // empty
-export class ArticleService {
-    /**
-     *
-     */
-    static articles(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/articles';
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static articles1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/articles/{articleId}';
-            url = url.replace('{articleId}', params['articleId'] + '');
-            const configs = getConfigs('put', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static articles2(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/articles/{articleId}';
-            url = url.replace('{articleId}', params['articleId'] + '');
-            const configs = getConfigs('delete', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
-export class ArticleCategoryService {
-    /**
-     *
-     */
-    static categories(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/categories';
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
 export class AuthenticationService {
     /**
      *
@@ -334,32 +280,6 @@ export class JumpStartService {
     /**
      *
      */
-    static dailyplan(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/jumpstart/dailyplan';
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static preview(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/jumpstart/{date}/preview';
-            url = url.replace('{date}', params['date'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { articleIds: params['articleIds'] };
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
     static jumpstart(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/jumpstart';
@@ -372,23 +292,11 @@ export class JumpStartService {
     /**
      *
      */
-    static stats(params = {}, options = {}) {
+    static attachment(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/jumpstart/stats';
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static stats1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/jumpstart/{jumpStartId}/stats';
-            url = url.replace('{jumpStartId}', params['jumpStartId'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
+            let url = '/api/v0/volkswagen/jumpstart/{date}/attachment';
+            url = url.replace('{date}', params['date'] + '');
+            const configs = getConfigs('post', 'multipart/form-data', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -553,7 +461,8 @@ export class ProductService {
      */
     static products(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/shop/products';
+            let url = '/api/v0/shop/categories/{categoryId}/products';
+            url = url.replace('{categoryId}', params['categoryId'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
@@ -565,7 +474,8 @@ export class ProductService {
      */
     static products1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/shop/products';
+            let url = '/api/v0/shop/categories/{categoryId}/products';
+            url = url.replace('{categoryId}', params['categoryId'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
@@ -577,8 +487,9 @@ export class ProductService {
      */
     static products2(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/shop/products/{productId}';
+            let url = '/api/v0/shop/categories/{categoryId}/products/{productId}';
             url = url.replace('{productId}', params['productId'] + '');
+            url = url.replace('{categoryId}', params['categoryId'] + '');
             const configs = getConfigs('put', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
@@ -590,8 +501,9 @@ export class ProductService {
      */
     static products3(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/shop/products/{productId}';
+            let url = '/api/v0/shop/categories/{categoryId}/products/{productId}';
             url = url.replace('{productId}', params['productId'] + '');
+            url = url.replace('{categoryId}', params['categoryId'] + '');
             const configs = getConfigs('delete', 'application/json', url, options);
             let data = null;
             configs.data = data;
@@ -603,8 +515,9 @@ export class ProductService {
      */
     static products4(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/shop/products/{productId}';
+            let url = '/api/v0/shop/categories/{categoryId}/products/{productId}';
             url = url.replace('{productId}', params['productId'] + '');
+            url = url.replace('{categoryId}', params['categoryId'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
@@ -612,13 +525,13 @@ export class ProductService {
         });
     }
 }
-export class ProductsService {
+export class ProductCategoryService {
     /**
      *
      */
     static categories(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/tenants/{tenantSlug}/categories';
+            let url = '/api/v0/shop/tenant/{tenantSlug}/categories';
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
@@ -629,13 +542,54 @@ export class ProductsService {
     /**
      *
      */
-    static products(params = {}, options = {}) {
+    static categories1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/tenants/{tenantSlug}/categories/{categorySlug}/products';
+            let url = '/api/v0/shop/tenant/{tenantSlug}/categories';
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            url = url.replace('{categorySlug}', params['categorySlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static categories2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/shop/tenant/{tenantSlug}/categories/{categoryId}';
+            url = url.replace('{categoryId}', params['categoryId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static categories3(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/shop/tenant/{tenantSlug}/categories/{categoryId}';
+            url = url.replace('{categoryId}', params['categoryId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static categories4(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/shop/tenant/{tenantSlug}/categories/{categoryId}';
+            url = url.replace('{categoryId}', params['categoryId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = params.body;
             configs.data = data;
             axios(configs, resolve, reject);
         });
@@ -758,6 +712,19 @@ export class TenantService {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/companies/{companySlug}/tenants';
             url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static tenants1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants';
+            url = url.replace('{companySlug}', params['companySlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
@@ -780,3 +747,39 @@ export class TenantReservationService {
         });
     }
 }
+export class UserService {
+    /**
+     *
+     */
+    static users(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/users';
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export var PaymentMethodType;
+(function (PaymentMethodType) {
+    PaymentMethodType["cash"] = "cash";
+    PaymentMethodType["abaBankTransfer"] = "abaBankTransfer";
+})(PaymentMethodType || (PaymentMethodType = {}));
+export var NotificationType;
+(function (NotificationType) {
+    NotificationType["email"] = "email";
+    NotificationType["whatsapp"] = "whatsapp";
+    NotificationType["text"] = "text";
+})(NotificationType || (NotificationType = {}));
+export var DayOfWeek;
+(function (DayOfWeek) {
+    DayOfWeek["sunday"] = "sunday";
+    DayOfWeek["monday"] = "monday";
+    DayOfWeek["tuesday"] = "tuesday";
+    DayOfWeek["wednesday"] = "wednesday";
+    DayOfWeek["thursday"] = "thursday";
+    DayOfWeek["friday"] = "friday";
+    DayOfWeek["saturday"] = "saturday";
+})(DayOfWeek || (DayOfWeek = {}));
