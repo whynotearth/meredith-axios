@@ -438,6 +438,46 @@ export class MemoService {
         });
     }
 }
+export class NewJumpStartService {
+    /**
+     *
+     */
+    static newjumpstart(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static attachment(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart/{date}/attachment';
+            url = url.replace('{date}', params['date'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static stats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart/stats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class PageService {
     /**
      *
