@@ -427,6 +427,19 @@ export class MemoService {
     /**
      *
      */
+    static overallstats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/memos/overallstats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static stats1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/memos/{memoId}/stats';
@@ -447,19 +460,6 @@ export class NewJumpStartService {
             let url = '/api/v0/volkswagen/newjumpstart';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static attachment(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/newjumpstart/{date}/attachment';
-            url = url.replace('{date}', params['date'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
