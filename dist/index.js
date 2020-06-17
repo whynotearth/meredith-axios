@@ -427,6 +427,19 @@ export class MemoService {
     /**
      *
      */
+    static stats1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/memos/{memoId}/stats';
+            url = url.replace('{memoId}', params['memoId'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static overallstats(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/memos/overallstats';
@@ -440,11 +453,37 @@ export class MemoService {
     /**
      *
      */
-    static stats1(params = {}, options = {}) {
+    static exportuserstats(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/memos/{memoId}/stats';
-            url = url.replace('{memoId}', params['memoId'] + '');
+            let url = '/api/v0/volkswagen/memos/exportuserstats';
             const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static exportopenstats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/memos/exportopenstats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static exportclickstats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/memos/exportclickstats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -467,9 +506,73 @@ export class NewJumpStartService {
     /**
      *
      */
+    static newjumpstart1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart';
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static stats(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/newjumpstart/stats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static newjumpstart2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart/{id}';
+            url = url.replace('{id}', params['id'] + '');
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static exportuserstats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart/exportuserstats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static exportopenstats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart/exportopenstats';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static exportclickstats(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/newjumpstart/exportclickstats';
             const configs = getConfigs('get', 'application/json', url, options);
             configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
             let data = null;
