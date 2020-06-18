@@ -1,7 +1,7 @@
 // Add default options
 export const serviceOptions = {};
 // Instance selector
-export function axios(configs, resolve, reject) {
+function axios(configs, resolve, reject) {
     if (serviceOptions.axios) {
         return serviceOptions.axios
             .request(configs)
@@ -16,10 +16,14 @@ export function axios(configs, resolve, reject) {
         throw new Error('please inject yourself instance like axios  ');
     }
 }
-export function getConfigs(method, contentType, url, options) {
+function getConfigs(method, contentType, url, options) {
     const configs = Object.assign({}, options, { method, url });
     configs.headers = Object.assign({}, options.headers, { 'Content-Type': contentType });
     return configs;
+}
+export class IList extends Array {
+}
+export class List extends Array {
 }
 export class ListResultDto {
 }
@@ -242,7 +246,7 @@ export class DistributionGroupService {
     static distributiongroups(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/distributiongroups';
-            const configs = getConfigs('put', 'multipart/form-data', url, options);
+            const configs = getConfigs('put', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -322,6 +326,34 @@ export class DistributionGroupService {
             let url = '/api/v0/volkswagen/distributiongroups/{distributionGroupName}/export';
             url = url.replace('{distributionGroupName}', params['distributionGroupName'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static stats1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups/{distributionGroupName}/stats';
+            url = url.replace('{distributionGroupName}', params['distributionGroupName'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static export1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/volkswagen/distributiongroups/{distributionGroupName}/stats/export';
+            url = url.replace('{distributionGroupName}', params['distributionGroupName'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -462,35 +494,9 @@ export class MemoService {
     /**
      *
      */
-    static exportuserstats(params = {}, options = {}) {
+    static export(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/memos/exportuserstats';
-            const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static exportopenstats(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/memos/exportopenstats';
-            const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static exportclickstats(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/memos/exportclickstats';
+            let url = '/api/v0/volkswagen/memos/overallstats/export';
             const configs = getConfigs('get', 'application/json', url, options);
             configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
             let data = null;
@@ -553,35 +559,9 @@ export class NewJumpStartService {
     /**
      *
      */
-    static exportuserstats(params = {}, options = {}) {
+    static export(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/newjumpstart/exportuserstats';
-            const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static exportopenstats(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/newjumpstart/exportopenstats';
-            const configs = getConfigs('get', 'application/json', url, options);
-            configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static exportclickstats(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/volkswagen/newjumpstart/exportclickstats';
+            let url = '/api/v0/volkswagen/newjumpstart/stats/export';
             const configs = getConfigs('get', 'application/json', url, options);
             configs.params = { fromDate: params['fromDate'], toDate: params['toDate'] };
             let data = null;
