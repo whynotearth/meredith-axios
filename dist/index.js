@@ -1,7 +1,7 @@
 // Add default options
 export const serviceOptions = {};
 // Instance selector
-export function axios(configs, resolve, reject) {
+function axios(configs, resolve, reject) {
     if (serviceOptions.axios) {
         return serviceOptions.axios
             .request(configs)
@@ -16,10 +16,14 @@ export function axios(configs, resolve, reject) {
         throw new Error('please inject yourself instance like axios  ');
     }
 }
-export function getConfigs(method, contentType, url, options) {
+function getConfigs(method, contentType, url, options) {
     const configs = Object.assign({}, options, { method, url });
     configs.headers = Object.assign({}, options.headers, { 'Content-Type': contentType });
     return configs;
+}
+export class IList extends Array {
+}
+export class List extends Array {
 }
 export class ListResultDto {
 }
@@ -208,6 +212,121 @@ export class CardService {
         });
     }
 }
+export class ClientService {
+    /**
+     *
+     */
+    static clients(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static clients1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static clients2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static archive(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/archive';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static pmu(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/pmu';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class ClientNoteService {
+    /**
+     *
+     */
+    static notes(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/notes';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static notes1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/notes';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static notes2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/notes/{noteId}';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{noteId}', params['noteId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class CompanyService {
     /**
      *
@@ -242,7 +361,7 @@ export class DistributionGroupService {
     static distributiongroups(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/volkswagen/distributiongroups';
-            const configs = getConfigs('put', 'multipart/form-data', url, options);
+            const configs = getConfigs('put', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -838,8 +957,8 @@ export class ProductCategoryService {
     static categories4(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/shop/tenant/{tenantSlug}/categories/{categoryId}';
-            url = url.replace('{categoryId}', params['categoryId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{categoryId}', params['categoryId'] + '');
             const configs = getConfigs('put', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
@@ -983,6 +1102,103 @@ export class TenantService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static active(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/{tenantSlug}/active';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static mytenants(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/mytenants';
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static tenants2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/{tenantSlug}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static tenants3(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/{tenantSlug}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('patch', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static owns(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/owns/{tenantSlug}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static address(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/{tenantSlug}/address';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static address1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/companies/{companySlug}/tenants/{tenantSlug}/address';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{companySlug}', params['companySlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class TenantReservationService {
     /**
@@ -1014,17 +1230,17 @@ export class UserService {
         });
     }
 }
-export var PaymentMethodType;
-(function (PaymentMethodType) {
-    PaymentMethodType["cash"] = "cash";
-    PaymentMethodType["abaBankTransfer"] = "abaBankTransfer";
-})(PaymentMethodType || (PaymentMethodType = {}));
 export var NotificationType;
 (function (NotificationType) {
     NotificationType["email"] = "email";
     NotificationType["whatsapp"] = "whatsapp";
     NotificationType["text"] = "text";
 })(NotificationType || (NotificationType = {}));
+export var PaymentMethodType;
+(function (PaymentMethodType) {
+    PaymentMethodType["cash"] = "cash";
+    PaymentMethodType["abaBankTransfer"] = "abaBankTransfer";
+})(PaymentMethodType || (PaymentMethodType = {}));
 export var DayOfWeek;
 (function (DayOfWeek) {
     DayOfWeek["sunday"] = "sunday";
