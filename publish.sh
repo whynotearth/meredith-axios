@@ -1,1 +1,1 @@
-yarn build || true && git add . && git commit -m "build" && git push origin master && npm run patch && npm publish --access=public
+git fetch origin && git reset --hard origin/master && yarn build || true && git add . && git commit -m "build" && npm run patch && npm publish --access=public && git push origin master
