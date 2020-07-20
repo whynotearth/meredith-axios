@@ -218,7 +218,7 @@ export class ClientService {
      */
     static clients(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients';
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
@@ -231,7 +231,7 @@ export class ClientService {
      */
     static clients1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients';
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
@@ -244,7 +244,7 @@ export class ClientService {
      */
     static clients2(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('put', 'application/json', url, options);
@@ -258,7 +258,7 @@ export class ClientService {
      */
     static archive(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/archive';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/archive';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
@@ -272,7 +272,7 @@ export class ClientService {
      */
     static pmu(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/pmu';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
@@ -288,7 +288,7 @@ export class ClientNoteService {
      */
     static notes(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/notes';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
@@ -302,7 +302,7 @@ export class ClientNoteService {
      */
     static notes1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/notes';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
@@ -316,7 +316,7 @@ export class ClientNoteService {
      */
     static notes2(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenant/{tenantSlug}/clients/{clientId}/notes/{noteId}';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes/{noteId}';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{noteId}', params['noteId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
@@ -807,6 +807,62 @@ export class PlanetCollageService {
             let url = '/api/v0/planetcollage/full';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class PmuQuestionService {
+    /**
+     *
+     */
+    static questions(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static questions1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static questions2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions/{questionId}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{questionId}', params['questionId'] + '');
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static questions3(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions/{questionId}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{questionId}', params['questionId'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
