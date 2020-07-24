@@ -281,6 +281,19 @@ export class ClientService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static signpmu(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/signpmu';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class ClientNoteService {
     /**
