@@ -1,1 +1,1 @@
-git fetch origin && git reset --hard origin/master && yarn build || true && git add . && git commit -m "build" && npm run patch && npm publish --access=public && git push origin master
+git fetch origin && git reset --hard origin/master && yarn build || true && git add . && git commit -m "build" && npm run patch && npm publish --access=public && git push origin master && git --no-pager diff HEAD~2..HEAD
