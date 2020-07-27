@@ -18,7 +18,7 @@
     "typescript": "~3.5.3"
   },
   "author": "",
-  "license": "AGPL-v3",
+  "license": "AGPL-3.0-only",
   "contributors": [
     "Morteza Ziyae <m.ziaeemehr@gmail.com>"
   ],
