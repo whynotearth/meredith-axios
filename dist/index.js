@@ -280,9 +280,10 @@ export class ClientService {
     /**
      *
      */
-    static signpmu(params = {}, options = {}) {
+    static sign(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/signpmu';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu/sign';
+            url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
             let data = null;
