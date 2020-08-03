@@ -252,6 +252,20 @@ export class ClientService {
     /**
      *
      */
+    static clients3(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static archive(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/archive';
