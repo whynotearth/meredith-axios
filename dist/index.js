@@ -294,9 +294,9 @@ export class ClientService {
     /**
      *
      */
-    static sign(params = {}, options = {}) {
+    static signed(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu/sign';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu/signed';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
@@ -1316,6 +1316,12 @@ export var NotificationType;
     NotificationType["whatsapp"] = "whatsapp";
     NotificationType["text"] = "text";
 })(NotificationType || (NotificationType = {}));
+export var PmuStatusType;
+(function (PmuStatusType) {
+    PmuStatusType["incomplete"] = "incomplete";
+    PmuStatusType["saving"] = "saving";
+    PmuStatusType["completed"] = "completed";
+})(PmuStatusType || (PmuStatusType = {}));
 export var PaymentMethodType;
 (function (PaymentMethodType) {
     PaymentMethodType["cash"] = "cash";
