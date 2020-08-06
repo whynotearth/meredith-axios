@@ -836,62 +836,6 @@ export class PlanetCollageService {
         });
     }
 }
-export class PmuQuestionService {
-    /**
-     *
-     */
-    static questions(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static questions1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static questions2(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions/{questionId}';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            url = url.replace('{questionId}', params['questionId'] + '');
-            const configs = getConfigs('put', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static questions3(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/questions/{questionId}';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            url = url.replace('{questionId}', params['questionId'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
 export class PriceService {
     /**
      *
