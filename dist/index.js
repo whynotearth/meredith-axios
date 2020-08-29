@@ -193,6 +193,21 @@ export class AuthenticationService {
         });
     }
 }
+export class BrowtricksTenantService {
+    /**
+     *
+     */
+    static tenants(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class CardService {
     /**
      *
@@ -331,6 +346,34 @@ export class CompanyService {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/companies/{companyId}/stripe/keys/publishable';
             url = url.replace('{companyId}', params['companyId'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class DisclosuresService {
+    /**
+     *
+     */
+    static disclosures(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/disclosures';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static disclosures1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/disclosures';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
@@ -817,8 +860,8 @@ export class PmuService {
             let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
@@ -826,9 +869,9 @@ export class PmuService {
     /**
      *
      */
-    static signed(params = {}, options = {}) {
+    static pmu1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu/signed';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
