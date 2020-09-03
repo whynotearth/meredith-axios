@@ -205,7 +205,19 @@ export class AuthenticationService {
         });
     }
 }
-export class BrowtricksTenantService {
+export class BrowtricksService {
+    /**
+     *
+     */
+    static profile(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/profile';
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
     /**
      *
      */
@@ -869,8 +881,7 @@ export class PmuService {
      */
     static pmu(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu';
-            url = url.replace('{clientId}', params['clientId'] + '');
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu';
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
@@ -883,7 +894,21 @@ export class PmuService {
      */
     static pmu1(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/{clientId}';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static pmu2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/{clientId}';
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
@@ -897,11 +922,10 @@ export class PmuService {
      */
     static notify(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/pmu/notify';
-            url = url.replace('{clientId}', params['clientId'] + '');
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/notify';
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
-            configs.params = { callbackUrl: params['callbackUrl'] };
+            configs.params = { clientId: params['clientId'], callbackUrl: params['callbackUrl'] };
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -1326,23 +1350,17 @@ export class UserService {
         });
     }
 }
+export var PaymentMethodType;
+(function (PaymentMethodType) {
+    PaymentMethodType["cash"] = "cash";
+    PaymentMethodType["abaBankTransfer"] = "abaBankTransfer";
+})(PaymentMethodType || (PaymentMethodType = {}));
 export var NotificationType;
 (function (NotificationType) {
     NotificationType["email"] = "email";
     NotificationType["whatsapp"] = "whatsapp";
     NotificationType["text"] = "text";
 })(NotificationType || (NotificationType = {}));
-export var PmuStatusType;
-(function (PmuStatusType) {
-    PmuStatusType["incomplete"] = "incomplete";
-    PmuStatusType["saving"] = "saving";
-    PmuStatusType["completed"] = "completed";
-})(PmuStatusType || (PmuStatusType = {}));
-export var PaymentMethodType;
-(function (PaymentMethodType) {
-    PaymentMethodType["cash"] = "cash";
-    PaymentMethodType["abaBankTransfer"] = "abaBankTransfer";
-})(PaymentMethodType || (PaymentMethodType = {}));
 export var DayOfWeek;
 (function (DayOfWeek) {
     DayOfWeek["sunday"] = "sunday";
@@ -1353,3 +1371,9 @@ export var DayOfWeek;
     DayOfWeek["friday"] = "friday";
     DayOfWeek["saturday"] = "saturday";
 })(DayOfWeek || (DayOfWeek = {}));
+export var PmuStatusType;
+(function (PmuStatusType) {
+    PmuStatusType["incomplete"] = "incomplete";
+    PmuStatusType["saving"] = "saving";
+    PmuStatusType["completed"] = "completed";
+})(PmuStatusType || (PmuStatusType = {}));
