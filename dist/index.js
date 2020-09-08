@@ -377,34 +377,6 @@ export class CompanyService {
         });
     }
 }
-export class DisclosuresService {
-    /**
-     *
-     */
-    static disclosures(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/disclosures';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static disclosures1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/disclosures';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
 export class DistributionGroupService {
     /**
      *
@@ -547,6 +519,76 @@ export class EmailsService {
             let url = '/api/v0/emails/{companySlug}/stats';
             url = url.replace('{companySlug}', params['companySlug'] + '');
             const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class FormTemplateService {
+    /**
+     *
+     */
+    static formtemplates(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static formtemplates1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static formtemplates2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{templateId}', params['templateId'] + '');
+            const configs = getConfigs('put', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static formtemplates3(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static formtemplates4(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
@@ -912,7 +954,7 @@ export class PmuService {
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('post', 'application/json', url, options);
-            let data = null;
+            let data = params.body;
             configs.data = data;
             axios(configs, resolve, reject);
         });
@@ -1377,3 +1419,20 @@ export var PmuStatusType;
     PmuStatusType["saving"] = "saving";
     PmuStatusType["completed"] = "completed";
 })(PmuStatusType || (PmuStatusType = {}));
+export var FormTemplateType;
+(function (FormTemplateType) {
+    FormTemplateType["disclosure"] = "disclosure";
+    FormTemplateType["aftercare"] = "aftercare";
+    FormTemplateType["cancellation"] = "cancellation";
+    FormTemplateType["custom"] = "custom";
+})(FormTemplateType || (FormTemplateType = {}));
+export var FormItemType;
+(function (FormItemType) {
+    FormItemType["text"] = "text";
+    FormItemType["agreement_request"] = "agreement_request";
+    FormItemType["text_response"] = "text_response";
+    FormItemType["checklist"] = "checklist";
+    FormItemType["multiple_choice"] = "multiple_choice";
+    FormItemType["image"] = "image";
+    FormItemType["pdf"] = "pdf";
+})(FormItemType || (FormItemType = {}));
