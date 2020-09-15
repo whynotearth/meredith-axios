@@ -558,8 +558,8 @@ export class FormTemplateService {
     static formtemplates2(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
             const configs = getConfigs('put', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
