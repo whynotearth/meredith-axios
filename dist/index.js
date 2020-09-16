@@ -525,6 +525,68 @@ export class EmailsService {
         });
     }
 }
+export class FormAnswerService {
+    /**
+     *
+     */
+    static preview(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/preview';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static preview1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/preview/{clientId}';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static answer(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/answer/{clientId}';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static notify(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/notify/{clientId}';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            configs.params = { callbackUrl: params['callbackUrl'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class FormTemplateService {
     /**
      *
@@ -558,8 +620,8 @@ export class FormTemplateService {
     static formtemplates2(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}';
-            url = url.replace('{templateId}', params['templateId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{templateId}', params['templateId'] + '');
             const configs = getConfigs('put', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
@@ -912,63 +974,6 @@ export class PlanetCollageService {
             let url = '/api/v0/planetcollage/full';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
-export class PmuService {
-    /**
-     *
-     */
-    static pmu(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static pmu1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/{clientId}';
-            url = url.replace('{clientId}', params['clientId'] + '');
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static pmu2(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/{clientId}';
-            url = url.replace('{clientId}', params['clientId'] + '');
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static notify(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/pmu/notify';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            configs.params = { clientId: params['clientId'], callbackUrl: params['callbackUrl'] };
-            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
@@ -1413,19 +1418,6 @@ export var DayOfWeek;
     DayOfWeek["friday"] = "friday";
     DayOfWeek["saturday"] = "saturday";
 })(DayOfWeek || (DayOfWeek = {}));
-export var PmuStatusType;
-(function (PmuStatusType) {
-    PmuStatusType["incomplete"] = "incomplete";
-    PmuStatusType["saving"] = "saving";
-    PmuStatusType["completed"] = "completed";
-})(PmuStatusType || (PmuStatusType = {}));
-export var FormTemplateType;
-(function (FormTemplateType) {
-    FormTemplateType["disclosure"] = "disclosure";
-    FormTemplateType["aftercare"] = "aftercare";
-    FormTemplateType["cancellation"] = "cancellation";
-    FormTemplateType["custom"] = "custom";
-})(FormTemplateType || (FormTemplateType = {}));
 export var FormItemType;
 (function (FormItemType) {
     FormItemType["text"] = "text";
