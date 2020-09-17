@@ -549,8 +549,8 @@ export class FormAnswerService {
             url = url.replace('{templateId}', params['templateId'] + '');
             url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
             configs.data = data;
             axios(configs, resolve, reject);
         });
