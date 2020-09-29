@@ -415,6 +415,18 @@ export class AuthenticationService {
     /**
      *
      */
+    static confirmphone(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/authentication/confirmphone';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static forgotpassword(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/authentication/forgotpassword';
@@ -513,9 +525,9 @@ export class AuthenticationService {
     /**
      *
      */
-    static phonenumbertoken(params = {}, options = {}) {
+    static confirmphonetoken(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/authentication/phonenumbertoken';
+            let url = '/api/v0/authentication/confirmphonetoken';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
@@ -530,18 +542,6 @@ export class AuthenticationService {
             let url = '/api/v0/authentication/tokenlogin';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static verifyphonenumber(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/authentication/verifyphonenumber';
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
