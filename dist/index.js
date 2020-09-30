@@ -419,7 +419,7 @@ export class AuthenticationService {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/authentication/confirmphone';
             const configs = getConfigs('post', 'application/json', url, options);
-            let data = null;
+            let data = params.body;
             configs.data = data;
             axios(configs, resolve, reject);
         });
