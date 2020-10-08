@@ -229,13 +229,29 @@ export class FormAnswerService {
     /**
      *
      */
+    static notify(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/notify/{clientId}';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            configs.params = { callbackUrl: params['callbackUrl'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static preview(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/preview';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/answer/preview';
             url = url.replace('{templateId}', params['templateId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('get', 'application/json', url, options);
-            let data = null;
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
             configs.data = data;
             axios(configs, resolve, reject);
         });
@@ -258,14 +274,26 @@ export class FormAnswerService {
     /**
      *
      */
-    static notify(params = {}, options = {}) {
+    static pdf(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/notify/{clientId}';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/preview/pdf';
             url = url.replace('{templateId}', params['templateId'] + '');
-            url = url.replace('{clientId}', params['clientId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            configs.params = { callbackUrl: params['callbackUrl'] };
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static png(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/formtemplates/{templateId}/preview/png';
+            url = url.replace('{templateId}', params['templateId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
             let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
