@@ -124,62 +124,6 @@ export class ClientService {
         });
     }
 }
-export class ClientMediaService {
-    /**
-     *
-     */
-    static images(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/images';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static videos(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/videos';
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static images1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/images/{imageId}';
-            url = url.replace('{imageId}', params['imageId'] + '');
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('delete', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-    /**
-     *
-     */
-    static videos1(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/videos/{videoId}';
-            url = url.replace('{videoId}', params['videoId'] + '');
-            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('delete', 'application/json', url, options);
-            let data = null;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
-}
 export class ClientNoteService {
     /**
      *
@@ -398,6 +342,62 @@ export class FormTemplateService {
         });
     }
 }
+export class TenantMediaService {
+    /**
+     *
+     */
+    static images(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/images';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static videos(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/videos';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static images1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/images/{imageId}';
+            url = url.replace('{imageId}', params['imageId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static videos1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/media/videos/{videoId}';
+            url = url.replace('{videoId}', params['videoId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class PriceService {
     /**
      *
@@ -512,6 +512,18 @@ export class AuthenticationService {
     /**
      *
      */
+    static confirmemail(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/authentication/confirmemail';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
     static confirmphone(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/authentication/confirmphone';
@@ -613,6 +625,18 @@ export class AuthenticationService {
     static register(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
             let url = '/api/v0/authentication/register';
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static confirmemailtoken(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/authentication/confirmemailtoken';
             const configs = getConfigs('post', 'application/json', url, options);
             let data = params.body;
             configs.data = data;
