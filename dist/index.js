@@ -655,18 +655,6 @@ export class AuthenticationService {
             axios(configs, resolve, reject);
         });
     }
-    /**
-     *
-     */
-    static tokenlogin(params = {}, options = {}) {
-        return new Promise((resolve, reject) => {
-            let url = '/api/v0/authentication/tokenlogin';
-            const configs = getConfigs('post', 'application/json', url, options);
-            let data = params.body;
-            configs.data = data;
-            axios(configs, resolve, reject);
-        });
-    }
 }
 export class CardService {
     /**
