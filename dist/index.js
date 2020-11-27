@@ -130,12 +130,11 @@ export class ClientNoteService {
      */
     static notes(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes/{noteId}';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes';
             url = url.replace('{clientId}', params['clientId'] + '');
-            url = url.replace('{noteId}', params['noteId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('delete', 'application/json', url, options);
-            let data = null;
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
             configs.data = data;
             axios(configs, resolve, reject);
         });
@@ -159,11 +158,42 @@ export class ClientNoteService {
      */
     static notes2(params = {}, options = {}) {
         return new Promise((resolve, reject) => {
-            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes';
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes/{noteId}';
             url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{noteId}', params['noteId'] + '');
             url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
-            const configs = getConfigs('post', 'application/json', url, options);
+            const configs = getConfigs('put', 'application/json', url, options);
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static notes3(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes/{noteId}';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{noteId}', params['noteId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static notes4(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/browtricks/tenants/{tenantSlug}/clients/{clientId}/notes/{noteId}';
+            url = url.replace('{clientId}', params['clientId'] + '');
+            url = url.replace('{noteId}', params['noteId'] + '');
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
