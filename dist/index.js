@@ -803,6 +803,74 @@ export class PageService {
         });
     }
 }
+export class PaymentMethodService {
+    /**
+     *
+     */
+    static paymentmethods(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/paymentmethods';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static paymentmethods1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/paymentmethods';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static paymentmethods2(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/paymentmethods/{id}';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            url = url.replace('{id}', params['id'] + '');
+            const configs = getConfigs('delete', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static payments(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/paymentmethods/payments';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static stripe(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/paymentmethods/stripe';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
 export class ProfileService {
     /**
      *
@@ -824,6 +892,86 @@ export class ProfileService {
             let url = '/api/v0/profile';
             const configs = getConfigs('put', 'application/json', url, options);
             let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+}
+export class SubscriptionService {
+    /**
+     *
+     */
+    static domain(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/subscriptions/domain/{domain}';
+            url = url.replace('{domain}', params['domain'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static cancel(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/subscriptions/cancel';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static changepaymentmethod(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/subscriptions/changepaymentmethod';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static subscriptions(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/subscriptions';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = params.body;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static subscriptions1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/subscriptions';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static payments(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/tenant/{tenantSlug}/subscriptions/payments';
+            url = url.replace('{tenantSlug}', params['tenantSlug'] + '');
+            const configs = getConfigs('get', 'application/json', url, options);
+            let data = null;
             configs.data = data;
             axios(configs, resolve, reject);
         });
