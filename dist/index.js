@@ -1286,6 +1286,32 @@ export class UserService {
             axios(configs, resolve, reject);
         });
     }
+    /**
+     *
+     */
+    static users1(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/users';
+            const configs = getConfigs('get', 'application/json', url, options);
+            configs.params = { Query: params['query'], Page: params['page'] };
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
+    /**
+     *
+     */
+    static resetPassword(params = {}, options = {}) {
+        return new Promise((resolve, reject) => {
+            let url = '/api/v0/users/{userId}/resetPassword';
+            url = url.replace('{userId}', params['userId'] + '');
+            const configs = getConfigs('post', 'application/json', url, options);
+            let data = null;
+            configs.data = data;
+            axios(configs, resolve, reject);
+        });
+    }
 }
 export class ArticleCategoryService {
     /**
